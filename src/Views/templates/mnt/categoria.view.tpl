@@ -1,49 +1,46 @@
-<h1>{{mode_dsc}}</h1>
+<h1>{{mode_desc}}</h1>
 <section>
-  <form action="index.php?page=mnt_categoria&mode={{mode}}&catid={{catid}}"
-    method="POST" >
-    <section>
-    <label for="catid">Código</label>
-    <input type="hidden" id="catid" name="catid" value="{{catid}}"/>
-    <input type="text" readonly name="catiddummy" value="{{catid}}"/>
-    </section>
-    <section>
-      <label for="catnom">Categoría</label>
-      <input type="text" {{readonly}} name="catnom" value="{{catnom}}" maxlength="45" placeholder="Nombre de Categoría"/>
-    </section>
-    <section>
+  <form action="index.php?page=mnt_categoria" method="post">
+    <input type="hidden" name="mode" value="{{mode}}" />
+    <input type="hidden" name="crsf_token" value="{{crsf_token}}" />
+    <input type="hidden" name="catid" value="{{catid}}" />
+    <fieldset>
+   
+    
+      <label for="catnom">Nombre</label>
+      <input {{if readonly}}readonly{{endif readonly}} type="text" id="catnom" name="catnom" placeholder="Nombre" value="{{catnom}}" />
+      {{if error_catnom}}
+          {{foreach error_catnom}}
+            <div class="error">{{this}}</div>
+          {{endfor error_catnom}}
+      {{endif error_catnom}}
+    </fieldset>
+    <fieldset>
+
+
       <label for="catest">Estado</label>
-      <select id="catest" name="catest" {{if readonly}}disabled{{endif readonly}}>
-        <option value="ACT" {{catest_ACT}}>Activo</option>
-        <option value="INA" {{catest_INA}}>Inactivo</option>
-        <option value="PLN" {{catest_PLN}}>Planificación</option>
+      <select name="catest" id="catest" {{if readonly}}readonly disabled{{endif readonly}}>
+        {{foreach catestArr}}
+        <option value="{{value}}" {{selected}}>{{text}}</option>
+        {{endfor catestArr}}
       </select>
-    </section>
-    {{if hasErrors}}
-        <section>
-          <ul>
-            {{foreach aErrors}}
-                <li>{{this}}</li>
-            {{endfor aErrors}}
-          </ul>
-        </section>
-    {{endif hasErrors}}
-    <section>
-      {{if showaction}}
-      <button type="submit" name="btnGuardar" value="G">Guardar</button>
-      {{endif showaction}}
-      <button type="button" id="btnCancelar">Cancelar</button>
-    </section>
+    </fieldset>
+    <fieldset>
+       
+      {{if showBtn}}
+        <button type="submit" name="btnEnviar">{{btnEnviarText}}</button>
+        &nbsp;
+      {{endif showBtn}}
+      <button name="btnCancelar" id="btnCancelar">Cancelar</button>
+    </fieldset>
   </form>
 </section>
-
-
 <script>
-  document.addEventListener("DOMContentLoaded", function(){
-      document.getElementById("btnCancelar").addEventListener("click", function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        window.location.assign("index.php?page=mnt_categorias");
-      });
+  document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('btnCancelar').addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = 'index.php?page=mnt_categorias';
+    });
   });
 </script>

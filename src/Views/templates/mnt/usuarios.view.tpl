@@ -1,8 +1,7 @@
+<section class="depth-1">
 <h1>Trabajar con Usuarios</h1>
-<section>
-
 </section>
-<section>
+<section class="WWList">
   <table>
     <thead>
       <tr>

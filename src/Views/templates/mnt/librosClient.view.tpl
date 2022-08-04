@@ -9,15 +9,18 @@
             <div class="card" style="margin: 2rem;">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                     data-mdb-ripple-color="light">
-                    <img src="public/imgs/joey-huang-XBh4DOGqMfc-unsplash.jpg" alt="{{libDsc}}" class="w-100"
-                        width="200" height="300">
+                    <img src="public/imgs/{{libimg}}" alt="{{libDsc}}" class="w-100"
+                        width="200" height="300" style="position: center;">
                     <div class="card-body">
                         <a href="index.php?page=Mnt-libroClient&mode=DSP&id={{libId}}" class="text-reset">
-                            <h4 class="card-title mb-3">{{libDsc}}</h4>
+                            <h3 class="card-title mb-3" style="font-size: 14px">{{libDsc}}</h3>
                         </a>
+                        <p style="text-color: gray">{{libautor}}</p>
                         <h5 class="mb-3">L {{libprice}}</h5>
-                        <button class="btn btn-whte shadow-sm rounded-pill"><i class="fal fa-shoping-cart"></i> Add to
-                            Cart</button>
+                        <form action="index.php?page=mnt_carrito" method="POST">
+                            <input type="hidden" name="id" id="id" value="{{libId}}" />
+                            <button name="btnAccion" value="Agregar" type="submit">Agregar al carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>

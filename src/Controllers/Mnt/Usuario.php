@@ -5,13 +5,13 @@ namespace Controllers\Mnt;
 // ---------------------------------------------------------------
 // Sección de imports
 // ---------------------------------------------------------------
-use Controllers\PublicController;
+use Controllers\PrivateController;
 use Views\Renderer;
 use Utilities\Validators;
 use Dao\Mnt\Usuarios;
 use Exception;
 
-class Usuario extends PublicController
+class Usuario extends PrivateController
 {
     private $viewData = array();
     private $arrModeDesc = array();

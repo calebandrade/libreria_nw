@@ -5,14 +5,12 @@
 // ---------------------------------------------------------------
 // Sección de imports
 // ---------------------------------------------------------------
-use Controllers\PublicController;
+use Controllers\PrivateController;
 use Views\Renderer;
 use Utilities\Validators;
-//use Dao\Mnt\Libros as Libros;
-use Dao\Mnt\Libros as DaoCategorias;
-use Dao\Mnt\Libros as DaoEditoriales;
+use Dao\Mnt\Libros as DaoLibros;
 
-class Libro extends PublicController
+class Libro extends PrivateController
 {
     private $viewData = array();
     private $arrModeDesc = array();
@@ -20,11 +18,7 @@ class Libro extends PublicController
     private $arrCategorias = array();
     private $arrEditoriales = array();
 
-    /**
-     * Runs the controller
-     *
-     * @return void
-     */
+
     public function run():void
     {
         
@@ -65,6 +59,15 @@ class Libro extends PublicController
         $this->viewData["libprice"] ="";
         $this->viewData["error_libprice"] = array();
 
+        $this->viewData["libCodInt"] ="";
+        $this->viewData["error_libCodInt"] = array();
+
+        $this->viewData["libimg"] ="";
+        $this->viewData["error_libimg"] = array();
+
+        $this->viewData["libautor"] ="";
+        $this->viewData["error_libautor"] = array();
+
       
         $this->viewData["btnEnviarText"] = "Guardar";
         $this->viewData["readonly"] = false;
@@ -83,12 +86,12 @@ class Libro extends PublicController
         );
 
         
-        foreach (DaoCategorias::getAllC() as $key){
+        foreach (DaoLibros::getAllC() as $key){
             $this->arrCategorias[] = array("value" => $key["catid"],"text" => $key["catnom"]);
         }
         
 
-      foreach(DaoEditoriales::getAllE() as $keys){
+      foreach(DaoLibros::getAllE() as $keys){
         $this->arrEditoriales[] = array("value" => $keys["editid"], "text" => $keys["editnom"]); 
       }
 
@@ -111,7 +114,7 @@ class Libro extends PublicController
         }
         if ($this->viewData["mode"] !== "INS" && isset($_GET["id"])) {
             $this->viewData["libId"] = intval($_GET["id"]);
-            $tmpLibros = DaoCategorias::getById($this->viewData["libId"]);
+            $tmpLibros = DaoLibros::getById($this->viewData["libId"]);
             error_log(json_encode($tmpLibros));
             \Utilities\ArrUtils::mergeFullArrayTo($tmpLibros, $this->viewData);
         }
@@ -144,6 +147,24 @@ class Libro extends PublicController
             $hasErrors = true;
         }
 
+        if (Validators::IsEmpty($this->viewData["libCodInt"])) {
+            $this->viewData["error_libCodInt"][]
+                = "El código de barra es requerido";
+            $hasErrors = true;
+        }
+
+        if (Validators::IsEmpty($this->viewData["libimg"])) {
+            $this->viewData["error_libimg"][]
+                = "La imagen es requerida";
+            $hasErrors = true;
+        }
+
+        if (Validators::IsEmpty($this->viewData["libautor"])) {
+            $this->viewData["error_libautor"][]
+                = "El autor es requerido";
+            $hasErrors = true;
+        }
+
        
 
         error_log(json_encode($this->viewData));
@@ -152,13 +173,16 @@ class Libro extends PublicController
             $result = null;
             switch($this->viewData["mode"]) {
             case 'INS':
-                $result = DaoCategorias::insert(
+                $result = DaoLibros::insert(
                     $this->viewData["libDsc"],
                     $this->viewData["catid"],
                     $this->viewData["editid"],
                     $this->viewData["libprice"],
+                    $this->viewData["libCodInt"],
+                    $this->viewData["libimg"],
+                    $this->viewData["libautor"],
                     $this->viewData["libest"],
-                    $this->viewData["libId"]
+                    
                 );
                 if ($result) {
                         \Utilities\Site::redirectToWithMsg(
@@ -168,11 +192,14 @@ class Libro extends PublicController
                 }
                 break;
             case 'UPD':
-                $result = DaoCategorias::update(
+                $result = DaoLibros::update(
                     $this->viewData["libDsc"],
                     $this->viewData["catid"],
                     $this->viewData["editid"],
                     $this->viewData["libprice"],
+                    $this->viewData["libCodInt"],
+                    $this->viewData["libimg"],
+                    $this->viewData["libautor"],
                     $this->viewData["libest"],
                     intval($this->viewData["libId"])
                 );
@@ -184,7 +211,7 @@ class Libro extends PublicController
                 }
                 break;
             case 'DEL':
-                $result = DaoCategorias::delete(
+                $result = DaoLibros::delete(
                     intval($this->viewData["libId"])
                 );
                 if ($result) {

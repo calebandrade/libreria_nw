@@ -4,12 +4,12 @@
 // ---------------------------------------------------------------
 // Sección de imports
 // ---------------------------------------------------------------
-use Controllers\PublicController;
+use Controllers\PrivateController;
 use Dao\Mnt\Libros as DaoLibros;
 use Views\Renderer;
 
 
-class Libros extends PublicController
+class Libros extends PrivateController
 {
     public function run():void
     {

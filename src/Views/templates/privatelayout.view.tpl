@@ -32,6 +32,14 @@
         {{foreach NAVIGATION}}
             <li><a href="{{nav_url}}">{{nav_label}}</a></li>
         {{endfor NAVIGATION}}
+        <li><a href="index.php?page=mnt_editorials"><i class="fas fa-sign-out-alt"></i>&nbsp;Editoriales</a></li>
+        <li><a href="index.php?page=mnt_categorias"><i class="fas fa-sign-out-alt"></i>&nbsp;Géneros</a></li>
+        <li><a href="index.php?page=mnt_libros"><i class="fas fa-sign-out-alt"></i>&nbsp;Libros</a></li>
+        <li><a href="index.php?page=mnt_ventas"><i class="fas fa-sign-out-alt"></i>&nbsp;Ventas</a></li>
+        <li><a href="index.php?page=mnt_usuarios"><i class="fas fa-sign-out-alt"></i>&nbsp;Usuarios</a></li>
+        <li><a href="index.php?page=mnt_roles"><i class="fas fa-sign-out-alt"></i>&nbsp;Roles</a></li>
+        <li><a href="index.php?page=mnt_funciones"><i class="fas fa-sign-out-alt"></i>&nbsp;Funciones</a></li>
+        <li><a href="index.php?page=mnt_librosClient"><i class="fas fa-sign-out-alt"></i>&nbsp;Libros Tienda</a></li>
         <li><a href="index.php?page=sec_logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Salir</a></li>
       </ul>
     </nav>

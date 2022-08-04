@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +10,17 @@
   <link rel="stylesheet" href="/{{BASE_DIR}}/public/css/appstyle.css" />
   <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
   {{foreach SiteLinks}}
-    <link rel="stylesheet" href="/{{~BASE_DIR}}/{{this}}" />
+  <link rel="stylesheet" href="/{{~BASE_DIR}}/{{this}}" />
   {{endfor SiteLinks}}
   {{foreach BeginScripts}}
-    <script src="/{{~BASE_DIR}}/{{this}}"></script>
+  <script src="/{{~BASE_DIR}}/{{this}}"></script>
   {{endfor BeginScripts}}
 </head>
+
 <body>
   <header>
     <input type="checkbox" class="menu_toggle" id="menu_toggle" />
-    <label for="menu_toggle" class="menu_toggle_icon" >
+    <label for="menu_toggle" class="menu_toggle_icon">
       <div class="hmb dgn pt-1"></div>
       <div class="hmb hrz"></div>
       <div class="hmb dgn pt-2"></div>
@@ -29,20 +31,32 @@
         <li><a href="index.php?page=index"><i class="fas fa-home"></i>&nbsp;Inicio</a></li>
         <li><a href="index.php?page=sec_login"><i class="fas fa-sign-in-alt"></i>&nbsp;Iniciar Sesión</a></li>
         <li><a href="index.php?page=sec_register"><i class="fas fa-user-plus"></i>&nbsp;Crear Cuenta</a></li>
-        <li><a href="index.php?page=mnt_libros"><i class="fas fa-user-plus"></i>&nbsp;Libros</a></li>
-        <li><a href="index.php?page=mnt_librosClient"><i class="fas fa-user-plus"></i>&nbsp;Libros Cliente</a></li>
+        <li><a href="index.php?page=mnt_librosClient"><i class="fas fa-user-plus"></i>&nbsp;Libros</a></li>
+        <li><a href="index.php?page=mnt_carrito"><i class="fas fa-user-plus"></i>&nbsp;Carrito</a></li>
 
       </ul>
     </nav>
   </header>
   <main>
-  {{{page_content}}}
+    {{{page_content}}}
   </main>
   <footer>
-    <div>Todo los Derechos Reservados 2021 &copy;</div>
+    <div class="contenedor-footer">
+      <div class="content-foo">
+        <h4>Phone</h4>
+        <p>22550801</p>
+        <h4>Email</h4>
+        <p>Libreria@gmail.com</p>
+        <h4>Location</h4>
+        <p>Tegucigalpa</p>
+        &nbsp;
+        <div>Todo los Derechos Reservados 2021 &copy;</div>
+      </div>
+    </div>    
   </footer>
   {{foreach EndScripts}}
-    <script src="/{{~BASE_DIR}}/{{this}}"></script>
+  <script src="/{{~BASE_DIR}}/{{this}}"></script>
   {{endfor EndScripts}}
 </body>
+
 </html>

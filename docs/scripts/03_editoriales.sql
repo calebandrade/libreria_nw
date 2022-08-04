@@ -1,5 +1,7 @@
-CREATE TABLE `libreria_nw`.`editoriales` (
-  `editid` BIGINT(8) NOT NULL AUTO_INCREMENT,
-  `editnom` VARCHAR(45) NULL,
+CREATE TABLE IF NOT EXISTS `editorials` (
+  `editid` BIGINT NOT NULL AUTO_INCREMENT,
+  `editnom` VARCHAR(45) NULL DEFAULT NULL,
+  `editnum` VARCHAR(8) NULL DEFAULT NULL,
+  `editdirec` VARCHAR(250) NULL DEFAULT NULL,
   `editest` CHAR(3) NULL DEFAULT 'ACT',
-  PRIMARY KEY (`editid`));
+  PRIMARY KEY (`editid`))

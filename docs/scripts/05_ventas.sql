@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS `libreria_nw`.`ventas` (
+  `Ventaid` BIGINT NOT NULL AUTO_INCREMENT,
+  `fechaventa` DATETIME NULL DEFAULT NULL,
+  `libroVendido` TEXT NULL DEFAULT NULL,
+  `monto` DOUBLE NULL DEFAULT NULL,
+  PRIMARY KEY (`Ventaid`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin;

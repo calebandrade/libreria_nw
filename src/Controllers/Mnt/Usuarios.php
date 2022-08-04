@@ -4,11 +4,11 @@
 // ---------------------------------------------------------------
 // Sección de imports
 // ---------------------------------------------------------------
-use Controllers\PublicController;
+use Controllers\PrivateController;
 use Dao\Mnt\Usuarios as DaoUsuarios;
 use Views\Renderer;
 
-class Usuarios extends PublicController
+class Usuarios extends PrivateController
 {
     public function run():void
     {

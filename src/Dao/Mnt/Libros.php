@@ -22,13 +22,13 @@ class Libros extends Table
 
     public static function getAllC()
     {
-        $sqlstr = "Select * from categorias where catest='act';";
+        $sqlstr = "Select * from categorias where catest='ACT';";
         return self::obtenerRegistros($sqlstr, array());
     }
 
     public static function getAllE()
     {
-        $sqlstr = "Select * from editoriales where editest='act';";
+        $sqlstr = "Select * from editoriales where editest='ACT';";
         return self::obtenerRegistros($sqlstr, array());
     }
 
@@ -39,23 +39,25 @@ class Libros extends Table
         $catid,
         $editid,
         $libprice,
-        $libest,
+        $libCodInt,
+        $libimg,
+        $libautor,
+        $libest
     ) {
         $sqlstr = "INSERT INTO `libros`
-( `libDsc`,
-`catid`, `editid`, `libest`,
-`libprice`, `libfechalanzamiento`)
-VALUES
-(:libDsc,
-:catid, :editid,:libprice, :libest);
-";
+        ( `libDsc`,`catid`, `editid`,`libprice`, `libCodInt`, `libimg`, `libautor`,`libest`)
+        VALUES
+        (:libDsc, :catid, :editid, :libprice, :libCodInt, :libimg, :libautor, :libest)";
         $sqlParams = [
-           
             "libDsc" => $libDsc ,
             "catid" => $catid ,
             "editid" => $editid ,
             "libprice" => $libprice ,
+            "libCodInt" => $libCodInt ,
+            "libimg" => $libimg ,
+            "libautor" => $libautor,
             "libest" => $libest ,
+            
         ];
         return self::executeNonQuery($sqlstr, $sqlParams);
     }
@@ -65,20 +67,24 @@ VALUES
         $libDsc,
         $catid,
         $editid,
-        $libest,
         $libprice,
+        $libCodInt,
+        $libimg,
+        $libautor,
+        $libest,
         $libId
 
     ) {
-        $sqlstr = "UPDATE `libros` set
-`libDsc`=:libDsc, `catid`=:catid,
-`editid`=:editid,`libprice`=:libprice, `libest`=:libest,
- where `libId` = :libId;";
+        $sqlstr = "UPDATE `libros` set `libDsc`=:libDsc, `catid`=:catid,`editid`=:editid,`libprice`=:libprice, `libCodInt`=:libCodInt,`libimg`=:libimg,`libautor`=:libautor,`libest`=:libest
+                    where `libId` = :libId;";
         $sqlParams = array(
             "libDsc" => $libDsc,
             "catid" => $catid,
             "editid" => $editid,
             "libprice" => $libprice,
+            "libCodInt" => $libCodInt,
+            "libimg" => $libimg,
+            "libautor" => $libautor,
             "libest" => $libest,
             "libId" => $libId
         );

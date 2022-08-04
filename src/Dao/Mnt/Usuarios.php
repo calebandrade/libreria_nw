@@ -13,13 +13,7 @@ class Usuarios extends Table
         $sqlstr = "Select * from usuario;";
         return self::obtenerRegistros($sqlstr, array());
     }
-    /**
-     * Get Usuarios By Id
-     *
-     * @param int $usercod Codigo del Usuarios
-     *
-     * @return array
-     */
+    
     public static function getById(int $usercod)
     {
         $sqlstr = "SELECT * from `usuario` where usercod=:usercod;";

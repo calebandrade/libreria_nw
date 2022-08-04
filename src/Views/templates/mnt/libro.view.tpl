@@ -44,6 +44,36 @@
     </fieldset>
 
     <fieldset>
+      <label for="libCodInt">Codigo de Barras</label>
+      <input {{if readonly}}readonly{{endif readonly}} type="text" id="libCodInt" name="libCodInt" placeholder="Código de Barra" value="{{libCodInt}}" />
+      {{if error_libCodInt}}
+          {{foreach error_libCodInt}}
+            <div class="error">{{this}}</div>
+          {{endfor error_libCodInt}}
+      {{endif error_libCodInt}}
+    </fieldset>
+
+    <fieldset>
+      <label for="libimg">Imagen</label>
+      <input {{if readonly}}readonly{{endif readonly}} type="file" id="libimg" name="libimg" placeholder="Imagen" value="{{libimg}}" />
+      {{if error_libimg}}
+          {{foreach error_libimg}}
+            <div class="error">{{this}}</div>
+          {{endfor error_libimg}}
+      {{endif error_libimg}}
+    </fieldset>
+
+    <fieldset>
+      <label for="libautor">Autor</label>
+      <input {{if readonly}}readonly{{endif readonly}} type="text" id="libautor" name="libautor" placeholder="Autor" value="{{libautor}}" />
+      {{if error_libautor}}
+          {{foreach error_libautor}}
+            <div class="error">{{this}}</div>
+          {{endfor error_libautor}}
+      {{endif error_libautor}}
+    </fieldset>
+
+    <fieldset>
       <label for="libest">Estado</label>
       <select name="libest" id="libest" {{if readonly}}readonly disabled{{endif readonly}}>
         {{foreach libestArr}}
