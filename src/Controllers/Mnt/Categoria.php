@@ -65,7 +65,7 @@ class Categoria extends PrivateController
         if (isset($_GET["mode"])) {
             $this->viewData["mode"] = $_GET["mode"];
             if (!isset($this->arrModeDesc[$this->viewData["mode"]])) {
-                error_log('Error: (Piano) Mode solicitado no existe.');
+                error_log('Error: (Categoria) Mode solicitado no existe.');
                 \Utilities\Site::redirectToWithMsg(
                     "index.php?page=mnt_categorias",
                     "No se puede procesar su solicitud!"
@@ -137,7 +137,7 @@ class Categoria extends PrivateController
                 if ($result) {
                     \Utilities\Site::redirectToWithMsg(
                         "index.php?page=mnt_categorias",
-                        "Piano Actualizado Satisfactoriamente"
+                        "Categoria Actualizado Satisfactoriamente"
                     );
                 }
                 break;
@@ -148,7 +148,7 @@ class Categoria extends PrivateController
                 if ($result) {
                     \Utilities\Site::redirectToWithMsg(
                         "index.php?page=mnt_categorias",
-                        "Piano Eliminado Satisfactoriamente"
+                        "Categoria Eliminado Satisfactoriamente"
 
                     );
                 }

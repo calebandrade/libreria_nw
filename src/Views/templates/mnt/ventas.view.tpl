@@ -9,7 +9,6 @@
         <th>Fecha</th>
         <th>Libro</th>
         <th>Monto</th>
-        <th><a href="index.php?page=mnt-venta&mode=INS">Nuevo</a></th>
       </tr>
     </thead>
     <tbody>

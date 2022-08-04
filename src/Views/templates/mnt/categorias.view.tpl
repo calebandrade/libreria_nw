@@ -8,7 +8,7 @@
         <th>Codigo</th>
         <th>Nombre</th>
         <th>Estado</th>
-        <th><a href="index.php?page=Mnt-categoria&mode=INS">Nuevo</a></th>
+        <th><a href="index.php?page=mnt-categoria&mode=INS">Nuevo</a></th>
       </tr>
     </thead>
     <tbody>
@@ -20,9 +20,9 @@
         <td>{{catest}}</td>
      
         <td>
-          <a href="index.php?page=Mnt-categoria&mode=UPD&id={{catid}}">Editar</a>
+          <a href="index.php?page=mnt-categoria&mode=UPD&id={{catid}}">Editar</a>
           &NonBreakingSpace;
-          <a href="index.php?page=Mnt-categoria&mode=DEL&id={{catid}}">Eliminar</a>
+          <a href="index.php?page=mnt-categoria&mode=DEL&id={{catid}}">Eliminar</a>
         </td>
       </tr>
       {{endfor categorias}}
